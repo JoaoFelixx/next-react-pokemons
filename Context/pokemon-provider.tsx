@@ -14,9 +14,13 @@ interface PokemonApiResult {
   }]
 }
 
-const Context = createContext<PokemonsIndividual[]>([]);
+interface Pokemon {
+  pokemons: PokemonsIndividual[]
+}
 
-const useSelectorPokemon = () => useContext(Context);
+const Context = createContext<Pokemon>({ pokemons: [] });
+
+const useSelectorPokemon = (): Pokemon => useContext(Context);
 
 function PokemonProvider({ children }: Provider) {
   const [pokemons, setPokemons] = useState<PokemonsIndividual[]>([]);
@@ -27,24 +31,25 @@ function PokemonProvider({ children }: Provider) {
         const result = await fetch(environments.URL_BASE_API + '/pokemon?limit=40');
         const pokemons: PokemonApiResult = await result.json();
 
-        const pokemonsData = pokemons.results.reduce<Promise<PokemonsIndividual[]>>(async (acc, current) => {
-          const data = await fetch(current.url);
-          const pokemonsIndividuals: PokemonsIndividual = await data.json();
+        const pokemonsData = pokemons.results
+          .reduce<Promise<PokemonsIndividual[]>>(async (acc, current) => {
+            const data = await fetch(current.url);
+            const pokemonsIndividuals: PokemonsIndividual = await data.json();
 
-          (await acc).push(pokemonsIndividuals)
+            (await acc).push(pokemonsIndividuals)
 
-          return acc;
-        }, Promise.resolve([]));
+            return acc;
+          }, Promise.resolve([]));
 
         setPokemons(await pokemonsData);
       } catch (error) {
-        console.error(error)
+        return
       }
     })();
   }, [])
 
   return (
-    <Context.Provider value={pokemons}>
+    <Context.Provider value={{ pokemons }}>
       {children}
     </Context.Provider>
   )

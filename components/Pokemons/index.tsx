@@ -4,7 +4,7 @@ import { useSelectorPokemon } from 'Context/pokemon-provider';
 import { FlexContainer, Card } from './style';
 
 export function Pokemons() {
-  const pokemons = useSelectorPokemon();
+  const { pokemons } = useSelectorPokemon();
 
   return (
     <FlexContainer>
