@@ -28,7 +28,7 @@ function PokemonProvider({ children }: Provider) {
   useEffect(() => {
     (async () => {
       try {
-        const result = await fetch(environments.URL_BASE_API + '/pokemon?limit=40');
+        const result = await fetch(environments.URL_BASE_API + '/pokemon?limit=16');
         const pokemons: PokemonApiResult = await result.json();
 
         const pokemonsData = pokemons.results
