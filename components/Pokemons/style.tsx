@@ -7,7 +7,7 @@ const FlexContainer = styled.div`
 
 const Card = styled.div`
   margin: 4px;
-  background-color  : #F00;
+  background-color  : #ADADAD;
 `;
 
 export { FlexContainer, Card };
