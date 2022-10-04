@@ -1,13 +1,80 @@
 import styled from 'styled-components';
 
-const FlexContainer = styled.div`
+const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const ID = styled.p`
+  color: #7D7D7D;
+  font-weight: bold;
+  align-self: start;
 `;
 
 const Card = styled.div`
-  margin: 4px;
-  background-color  : #ADADAD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #ADADAD;
+
+  @media (max-width: 425px) {
+    width: 80%;
+  }
 `;
 
-export { FlexContainer, Card };
+interface PokemonType {
+  type: string;
+}
+
+const types = {
+  'fire': '#F00',
+  'water': '#00F',
+  'grass': '#0F0',
+  'poison': '#F0F',
+  default: '#777777',
+}
+
+const Info = styled.div`
+  width: 100%;
+  align-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: start;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 0.8em;
+  }
+`;
+
+const Type = styled.div<PokemonType>`
+  width: 40%;
+  padding: 0.2em;
+  text-style: uppercase;
+  background-color: ${props => types[props.type] || types.default};
+
+  @media (425px <= width<= 890px) {
+    width: 50%;
+  }
+`;
+
+export {
+  ID,
+  Flex, 
+  Card, 
+  Type, 
+  Info 
+};
