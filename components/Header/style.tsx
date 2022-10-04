@@ -7,15 +7,22 @@ const Head = styled.header`
   flex-direction: column;
   place-items: center;
   place-content: center;
-  padding: 1em;
+  padding: 1.5em 0;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.h2`
   color: #000;
+  margin-right: 0.2em;
 `;
 
 const SubTitle = styled.span`
   color: #000;
 `;
 
-export { Head, Title, SubTitle };
+export { Head, Flex, Title, SubTitle };
