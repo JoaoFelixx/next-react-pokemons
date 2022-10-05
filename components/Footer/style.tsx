@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
 const Foot = styled.footer`
-  
-
+	width: 100%;
+  background-color: #000;
+  color: #FFF;
 `;
 
-export { Foot };
+const Flex = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+`;
+
+export { Foot, Flex };
