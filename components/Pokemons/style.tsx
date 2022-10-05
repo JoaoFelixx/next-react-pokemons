@@ -21,21 +21,32 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
-  margin: 1em;
-  padding: 0.5em;
+  width: 90%;
+  margin: 2em;
+  padding: 0.8em;
   background-color: #ADADAD;
+
+  &:hover {
+    transition: 1s;
+    cursor: pointer;
+    padding: 1em 0.5em;
+  }
 
   @media (max-width: 425px) {
     width: 80%;
   }
+ 
 `;
 
 interface PokemonType {
   type: string;
 }
 
-const types = {
+interface Index {
+  [index: string]: string;
+}
+
+const types: Index = {
   'fire': '#F00',
   'water': '#00F',
   'grass': '#0F0',
@@ -76,5 +87,5 @@ export {
   Flex, 
   Card, 
   Type, 
-  Info 
+  Info,
 };
