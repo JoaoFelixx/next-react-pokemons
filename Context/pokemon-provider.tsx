@@ -15,15 +15,19 @@ interface PokemonApiResult {
 }
 
 interface Pokemon {
-  pokemons: PokemonsIndividual[]
+  pokemons: PokemonsIndividual[];
+  loading: boolean;
 }
 
-const Context = createContext<Pokemon>({ pokemons: [] });
+const Context = createContext<Pokemon>({ 
+  pokemons: [], loading: true,
+});
 
 const useSelectorPokemon = (): Pokemon => useContext(Context);
 
 function PokemonProvider({ children }: Provider) {
   const [pokemons, setPokemons] = useState<PokemonsIndividual[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -44,12 +48,14 @@ function PokemonProvider({ children }: Provider) {
         setPokemons(await pokemonsData);
       } catch (error) {
         return
+      } finally {
+        setLoading(false);
       }
     })();
   }, [])
 
   return (
-    <Context.Provider value={{ pokemons }}>
+    <Context.Provider value={{ pokemons, loading }}>
       {children}
     </Context.Provider>
   )
