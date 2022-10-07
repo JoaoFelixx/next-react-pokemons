@@ -2,13 +2,15 @@
   "name": "next-pokemon",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "João Félix",
+    "url": "https://felixdeveloper.netlify.app"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "12.2.3",
@@ -19,14 +21,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-interactions": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-webpack5": "^6.5.12",
-    "@storybook/manager-webpack5": "^6.5.12",
-    "@storybook/react": "^6.5.12",
-    "@storybook/testing-library": "^0.0.13",
     "@types/node": "18.6.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
