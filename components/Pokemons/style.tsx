@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+interface PokemonType {
+  type: string;
+}
+
+interface Index {
+  [index: string]: string;
+  default: string;
+}
+
+const types: Index = {
+  'fire': '#fa2727',
+  'water': '#458af1',
+  'grass': '#1bd42a',
+  'poison': '#f83ff8',
+  default: '#777777',
+}
+
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -9,12 +26,6 @@ const Flex = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`;
-
-const ID = styled.p`
-  color: #7D7D7D;
-  font-weight: bold;
-  align-self: start;
 `;
 
 const Card = styled.div`
@@ -27,9 +38,10 @@ const Card = styled.div`
   background-color: #ADADAD;
 
   &:hover {
-    transition: 1s;
+    position: relative;
+    transition: 1.5s;
     cursor: pointer;
-    padding: 1em 0.5em;
+    top: -1em;
   }
 
   @media (max-width: 425px) {
@@ -38,21 +50,11 @@ const Card = styled.div`
  
 `;
 
-interface PokemonType {
-  type: string;
-}
-
-interface Index {
-  [index: string]: string;
-}
-
-const types: Index = {
-  'fire': '#F00',
-  'water': '#00F',
-  'grass': '#0F0',
-  'poison': '#F0F',
-  default: '#777777',
-}
+const ID = styled.p`
+  color: #7D7D7D;
+  font-weight: bold;
+  align-self: start;
+`;
 
 const Info = styled.div`
   width: 100%;
@@ -71,6 +73,26 @@ const Info = styled.div`
   }
 `;
 
+const Spin = styled.div`
+  border: 16px solid transparent;
+  border-radius: 50%;
+  border-top: 16px solid #E3350D;
+  width: 120px;
+  height: 120px;
+
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
 const Type = styled.div<PokemonType>`
   width: 40%;
   padding: 0.2em;
@@ -83,9 +105,5 @@ const Type = styled.div<PokemonType>`
 `;
 
 export {
-  ID,
-  Flex, 
-  Card, 
-  Type, 
-  Info,
+  ID, Flex, Spin, Card, Type, Info,
 };
