@@ -17,6 +17,7 @@ export function Footer() {
             <div>
               <h1>Pokemon info</h1>
               <p>API Pokemon: <code>https://pokeapi.co/</code></p>
+              <p>Reference site: <code>https://www.pokemon.com/br/pokedex/</code></p>
               <p>
                 <Link href='https://felixdeveloper.netlify.app'>
                   Developer Contact 
